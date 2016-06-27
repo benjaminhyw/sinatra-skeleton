@@ -18,6 +18,17 @@
   <title></title>
 </head>
 <body>
+
+<% if session[:user_id] != nil %>
+  <a href="/">Home</a> | 
+  <a href="/users/<%=session[:user_id]%>"%>Profile</a> | 
+  <a href="/logout">Logout</a>
+<% else %>
+  <a href="/">Home</a> | 
+  <a href="/users/new"> Register</a> |
+  <a href="/login">Login</a>
+<% end %>
+
   <%= yield %>
 </body>
 </html>

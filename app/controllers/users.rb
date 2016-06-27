@@ -3,6 +3,10 @@ get '/users/new' do
 end
 
 post '/users' do
-  @user = User.creat(first_name: params[:first_name], last_name: params[:last_name], email: params[:email], password: params[:password])
+  @user = User.create(first_name: params[:first_name], last_name: params[:last_name], email: params[:email], password: params[:password])
   redirect '/'
+end
+
+get '/login' do
+  erb :'users/login'
 end
