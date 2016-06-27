@@ -1,5 +1,5 @@
 <% if current_user %>
-  <p><h2> "Your Profile!"</h2></p>
+  <p><h2> Your Profile!</h2></p>
 <% else %>
   <p><h2><%= "#{@user.first_name} #{@user.last_name}'s Profile!" %></h2></p>
 <% end %>
