@@ -7,6 +7,11 @@ post '/users' do
   redirect '/'
 end
 
+get "/users/:id" do
+  @user = User.find_by_id(params[:id])
+  erb :'/users/show'
+end
+
 get '/login' do
   erb :'users/login'
 end
