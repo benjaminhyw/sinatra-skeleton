@@ -8,7 +8,16 @@ $(document).ready(function() {
     ajax.done(function(createUser){
       $("#form-container").append(createUser);
     })
-    // $("#form-container").append("#registration-form");
   })
 
+  $("#login").on("click", function(event){
+    event.preventDefault();
+    var ajax = $.ajax({
+      url: 'login',
+      type: 'GET'
+    });
+    ajax.done(function(loginUser){
+      $("#form-container").append(loginUser);
+    })
+  })
 });

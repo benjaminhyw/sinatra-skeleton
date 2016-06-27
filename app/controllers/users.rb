@@ -17,7 +17,11 @@ get "/users/:id" do
 end
 
 get '/login' do
-  erb :'users/login'
+  if request.xhr?
+    erb :'users/login', layout: false
+  else
+    erb :'users/login'
+  end
 end
 
 post '/login' do
