@@ -1,5 +1,9 @@
 get '/users/new' do
-  erb :'users/register'
+  if request.xhr?
+    erb :'users/register', layout: false
+  else
+    erb :'users/register'
+  end
 end
 
 post '/users' do
