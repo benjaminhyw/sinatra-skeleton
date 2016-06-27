@@ -10,3 +10,18 @@ end
 get '/login' do
   erb :'users/login'
 end
+
+post '/login' do
+  @user = User.authenticate(params[:email], params[:password])
+  if @user
+    login(@user)
+    redirect '/'
+  else
+    erb :login
+  end
+end
+
+get '/logout' do 
+  session[:user_id] = nil
+  redirect '/'
+end
