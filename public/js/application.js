@@ -6,6 +6,7 @@ $(document).ready(function() {
       type: 'GET'
     });
     ajax.done(function(createUser){
+      $("#form-container").empty();
       $("#form-container").append(createUser);
     })
   })
@@ -17,6 +18,7 @@ $(document).ready(function() {
       type: 'GET'
     });
     ajax.done(function(loginUser){
+      $("#form-container").empty();
       $("#form-container").append(loginUser);
     })
   })
