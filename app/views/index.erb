@@ -1,5 +1,5 @@
 <div id="form-container">
 </div>
-
-Welcome, <%= @user.first_name %>!
-
+<% if @user %>
+  Welcome, <%= @user.first_name %>!
+<% end %>
