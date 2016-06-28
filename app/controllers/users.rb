@@ -8,8 +8,12 @@ end
 
 post '/users' do
   @user = User.create(first_name: params[:first_name], last_name: params[:last_name], email: params[:email], password: params[:password])
-  login(@user)
-  redirect '/'
+  if @user
+    login(@user)
+    redirect '/'
+  else
+    redirect '/users/new'
+  end
 end
 
 get "/users/:id" do
@@ -31,6 +35,7 @@ post '/login' do
     login(@user)
     redirect '/'
   else
+    # @errors = User.errors.full_messages
     erb :login
   end
 end
