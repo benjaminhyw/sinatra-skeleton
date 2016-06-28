@@ -7,18 +7,25 @@ get '/users/new' do
 end
 
 post '/users' do
-  @user = User.create(first_name: params[:first_name], last_name: params[:last_name], email: params[:email], password: params[:password])
-  if @user
+  @user = User.new(first_name: params[:first_name], last_name: params[:last_name], email: params[:email], password: params[:password])
+
+  if @user.save
     login(@user)
     redirect '/'
   else
-    redirect '/users/new'
+    @errors = @user.errors.full_messages  
+    erb :'users/register'
   end
 end
 
 get "/users/:id" do
   @user = User.find_by_id(params[:id])
   erb :'/users/show'
+end
+
+get "/users/:id/edit" do
+  @user = User.find_by_id(params[:id])
+  erb :'/users/edit'
 end
 
 get '/login' do
@@ -35,8 +42,8 @@ post '/login' do
     login(@user)
     redirect '/'
   else
-    # @errors = User.errors.full_messages
-    erb :login
+    @errors = "Incorrect info"
+    erb :'users/login'
   end
 end
 
