@@ -7,13 +7,15 @@ get '/users/new' do
 end
 
 post '/users' do
+  if params[:password] == ''
+    @errors = ["Password field empty"]
+  end
   @user = User.new(first_name: params[:first_name], last_name: params[:last_name], email: params[:email], password: params[:password])
-
   if @user.save
     login(@user)
     redirect '/'
   else
-    @errors = @user.errors.full_messages  
+    @errors += @user.errors.full_messages  
     erb :'users/register'
   end
 end
