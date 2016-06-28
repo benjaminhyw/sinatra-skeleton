@@ -1,9 +1,10 @@
 class User < ActiveRecord::Base
   # Remember to create a migration!
   include BCrypt
-  
+
+
   validates_presence_of :first_name, :last_name, :email, :password
-  validates :password, length: { in: 3..20 }
+  validates :password, length: { minimum: 3 }
   validates :email, uniqueness: true
   validates :hashed_password, uniqueness: true
 
