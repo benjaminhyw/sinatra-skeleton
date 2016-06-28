@@ -2,7 +2,8 @@ class User < ActiveRecord::Base
   # Remember to create a migration!
   include BCrypt
   
-  validates_presence_of :email, :password
+  validates_presence_of :first_name, :last_name, :email, :password
+  validates :password, length: { in: 3..20 }
   validates :email, uniqueness: true
   validates :hashed_password, uniqueness: true
 
@@ -17,7 +18,7 @@ class User < ActiveRecord::Base
 
   def self.authenticate(email, password)
     @user = User.find_by(email: email)
-    if @user.password == password
+    if @user && @user.password == password
       return @user
     else
       nil

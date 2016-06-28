@@ -1,7 +1,7 @@
 <h1>Edit Profile</h1>
 
 <main class="form-wrapper" role="main">
-  <form method="post" action="/users/<%= @entry.id %>">
+  <form method="post" action="/users/<%= @user.id %>">
   <input type="hidden" name="_method" value="put">
     <label for="singer_name_input">Singer name:</label>
     <input id="singer_name_input" name="entry[singer]" type="text" value="<%= @entry.try(:singer) %>">
