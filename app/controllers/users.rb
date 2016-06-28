@@ -21,6 +21,11 @@ get "/users/:id" do
   erb :'/users/show'
 end
 
+get "/users/:id/edit" do
+  @user = User.find_by_id(params[:id])
+  erb :'/users/edit'
+end
+
 get '/login' do
   if request.xhr?
     erb :'users/login', layout: false
