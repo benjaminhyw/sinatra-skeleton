@@ -20,13 +20,17 @@
 <body>
 
 <% if session[:user_id] != nil %>
-  <a href="/">Home</a> | 
-  <a href="/users/<%=session[:user_id]%>"%>Profile</a> | 
-  <a href="/logout">Logout</a>
+  <span id="nav">
+    <a href="/">Home</a> | 
+    <a href="/users/<%=session[:user_id]%>"%>Profile</a> | 
+    <a href="/logout">Logout</a>
+  </span>
 <% else %>
-  <a href="/">Home</a> | 
-  <a href="/users/new"> Register</a> |
-  <a href="/login">Login</a>
+  <span id="nav">
+    <a href="/">Home</a> | 
+    <a id="register" href="/users/new"> Register</a> |
+    <a id="login" href="/login">Login</a>
+  </span>
 <% end %>
 
   <%= yield %>

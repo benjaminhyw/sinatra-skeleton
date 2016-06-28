@@ -1,0 +1,12 @@
+#form-container{
+  border-width: 3px;
+  border-style: solid;
+  height: 25%;
+  width: 25%;
+  margin: 0 auto;
+}
+
+#nav{
+  float: right;
+}
+

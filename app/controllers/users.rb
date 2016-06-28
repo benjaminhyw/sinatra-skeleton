@@ -1,9 +1,14 @@
 get '/users/new' do
-  erb :'users/register'
+  if request.xhr?
+    erb :'users/register', layout: false
+  else
+    erb :'users/register'
+  end
 end
 
 post '/users' do
   @user = User.create(first_name: params[:first_name], last_name: params[:last_name], email: params[:email], password: params[:password])
+  login(@user)
   redirect '/'
 end
 
@@ -13,7 +18,11 @@ get "/users/:id" do
 end
 
 get '/login' do
-  erb :'users/login'
+  if request.xhr?
+    erb :'users/login', layout: false
+  else
+    erb :'users/login'
+  end
 end
 
 post '/login' do

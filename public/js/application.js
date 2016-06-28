@@ -1,7 +1,25 @@
 $(document).ready(function() {
-  // This is called after the document has loaded in its entirety
-  // This guarantees that any elements we bind to will exist on the page
-  // when we try to bind to them
+  $("#register").on("click", function(event){
+    event.preventDefault();
+    var ajax = $.ajax({
+      url: 'users/new',
+      type: 'GET'
+    });
+    ajax.done(function(createUser){
+      $("#form-container").empty();
+      $("#form-container").append(createUser);
+    })
+  })
 
-  // See: http://docs.jquery.com/Tutorials:Introducing_$(document).ready()
+  $("#login").on("click", function(event){
+    event.preventDefault();
+    var ajax = $.ajax({
+      url: 'login',
+      type: 'GET'
+    });
+    ajax.done(function(loginUser){
+      $("#form-container").empty();
+      $("#form-container").append(loginUser);
+    })
+  })
 });
