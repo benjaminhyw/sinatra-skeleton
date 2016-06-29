@@ -21,4 +21,17 @@
 
     <input type="submit" value="Update Entry" class="button">
   </form>
+
+  <h3>Delete Profile:</h3>
+<form method="post" action="/users/<%= @user.id %>">
+  <input type="hidden" name="_method" value="delete">
+  <input type="submit" value="delete" />
+</form>
 </main>
+
+
+
+
+
+
+

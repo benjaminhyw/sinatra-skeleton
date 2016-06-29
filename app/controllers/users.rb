@@ -36,6 +36,13 @@ put '/users/:id' do
   redirect "/users/#{@user.id}"
 end
 
+delete '/users/:id' do
+  @user = User.find(params[:id])
+  @user.destroy
+  session.clear
+  redirect '/'
+end
+
 get '/login' do
   if request.xhr?
     erb :'users/login', layout: false
