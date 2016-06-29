@@ -1,5 +1,6 @@
 <% if current_user == @user %>
   <p><h2> Your Profile! </h2></p>
+  <a href="/users/<%=session[:user_id]%>/edit"%>Edit Profile</a>
 <% else %>
   <p><h2><%= "#{@user.first_name} #{@user.last_name}'s Profile!" %></h2></p>
 <% end %>
