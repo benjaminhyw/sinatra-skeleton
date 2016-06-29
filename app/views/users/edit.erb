@@ -4,9 +4,16 @@
   <form method="post" action="/users/<%= @user.id %>">
   <input type="hidden" name="_method" value="put">
     <label for="first_name">First name:</label>
-    <input id="first_name" name="first_name" type="text" value="<%= @entry.try(:first_name) %>">
+    <input id="first_name" name="first_name" type="text" value="<%= @user.try(:first_name) %>">
 
-    
+    <label for="last_name">Last name:</label>
+    <input id="last_name" name="last_name" type="text" value="<%= @user.try(:last_name) %>">
+
+    <label for="email">Email:</label>
+    <input id="first_name" name="email" type="text" value="<%= @user.try(:email) %>">
+
+    <label for="password">Password:</label>
+    <input id="password" name="password" type="text" value="<%= @user.try(:password) %>">
 
     <input type="submit" value="Update Entry" class="button">
   </form>
