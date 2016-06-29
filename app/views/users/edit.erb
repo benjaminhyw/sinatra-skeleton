@@ -3,11 +3,10 @@
 <main class="form-wrapper" role="main">
   <form method="post" action="/users/<%= @user.id %>">
   <input type="hidden" name="_method" value="put">
-    <label for="singer_name_input">Singer name:</label>
-    <input id="singer_name_input" name="entry[singer]" type="text" value="<%= @entry.try(:singer) %>">
+    <label for="first_name">First name:</label>
+    <input id="first_name" name="first_name" type="text" value="<%= @entry.try(:first_name) %>">
 
-    <label for="song_title_input">Song title:</label>
-    <input id="song_title_input"  name="entry[song_title]" type="text" value="<%= @entry.try(:song_title) %>">
+    
 
     <input type="submit" value="Update Entry" class="button">
   </form>

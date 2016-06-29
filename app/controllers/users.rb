@@ -30,6 +30,12 @@ get "/users/:id/edit" do
   erb :'/users/edit'
 end
 
+put '/users/:id' do
+  @user = User.find(params[:id])
+  @user.update_attributes(first_name: params[:first_name])
+  redirect "/users/#{@user.id}"
+end
+
 get '/login' do
   if request.xhr?
     erb :'users/login', layout: false
