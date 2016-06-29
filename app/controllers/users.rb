@@ -11,7 +11,7 @@ post '/users' do
     @errors = ["Password field empty"]
   end
   @user = User.new(first_name: params[:first_name], last_name: params[:last_name], email: params[:email], password: params[:password])
-  if @user.save
+  if !@errors && @user.save
     login(@user)
     redirect '/'
   else
@@ -28,6 +28,19 @@ end
 get "/users/:id/edit" do
   @user = User.find_by_id(params[:id])
   erb :'/users/edit'
+end
+
+put '/users/:id' do
+  @user = User.find(params[:id])
+  @user.update_attributes(first_name: params[:first_name], last_name: params[:last_name], email: params[:email], password: params[:password])
+  redirect "/users/#{@user.id}"
+end
+
+delete '/users/:id' do
+  @user = User.find(params[:id])
+  @user.destroy
+  session.clear
+  redirect '/'
 end
 
 get '/login' do

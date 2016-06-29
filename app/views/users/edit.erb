@@ -1,14 +1,37 @@
+<% if current_user != @user %>
+  <% redirect :'/' %>
+<% end %>
+
 <h1>Edit Profile</h1>
 
 <main class="form-wrapper" role="main">
   <form method="post" action="/users/<%= @user.id %>">
   <input type="hidden" name="_method" value="put">
-    <label for="singer_name_input">Singer name:</label>
-    <input id="singer_name_input" name="entry[singer]" type="text" value="<%= @entry.try(:singer) %>">
+    <label for="first_name">First name:</label>
+    <input id="first_name" name="first_name" type="text" value="<%= @user.try(:first_name) %>">
 
-    <label for="song_title_input">Song title:</label>
-    <input id="song_title_input"  name="entry[song_title]" type="text" value="<%= @entry.try(:song_title) %>">
+    <label for="last_name">Last name:</label>
+    <input id="last_name" name="last_name" type="text" value="<%= @user.try(:last_name) %>">
+
+    <label for="email">Email:</label>
+    <input id="first_name" name="email" type="text" value="<%= @user.try(:email) %>">
+
+    <label for="password">Password:</label>
+    <input id="password" name="password" type="text" value="<%= @user.try(:password) %>">
 
     <input type="submit" value="Update Entry" class="button">
   </form>
+
+  <h3>Delete Profile:</h3>
+<form method="post" action="/users/<%= @user.id %>">
+  <input type="hidden" name="_method" value="delete">
+  <input type="submit" value="delete" />
+</form>
 </main>
+
+
+
+
+
+
+
