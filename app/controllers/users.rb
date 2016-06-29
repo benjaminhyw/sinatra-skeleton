@@ -11,7 +11,7 @@ post '/users' do
     @errors = ["Password field empty"]
   end
   @user = User.new(first_name: params[:first_name], last_name: params[:last_name], email: params[:email], password: params[:password])
-  if @user.save
+  if !@errors && @user.save
     login(@user)
     redirect '/'
   else
